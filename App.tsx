@@ -1,10 +1,7 @@
 import React from "react";
-import { Text, View } from "react-native";
+import AppStack from "./src/navigation/AppStack";
 
-export default function App() {
-    return (
-        <View >
-            <Text>Home 2</Text>  
-        </View>
-    );
-}
+const App = () => {
+  return <AppStack />;
+};
+export default App;
