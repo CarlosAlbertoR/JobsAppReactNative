@@ -12,6 +12,7 @@ export interface IJob {
   job_id: string;
   job_title: string;
   job_country: string;
+  job_employment_type: string;
   employer_logo: string;
   employer_name: string;
 }
