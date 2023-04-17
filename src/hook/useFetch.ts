@@ -3,9 +3,10 @@ import axios, { AxiosResponse } from "axios";
 import { API_KEY } from "@env";
 
 interface IPayload {
-  query: string;
-  page: string;
-  num_pages: string;
+  query?: string;
+  page?: string;
+  num_pages?: string;
+  job_id?: string;
 }
 
 export interface IJob {

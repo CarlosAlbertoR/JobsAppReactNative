@@ -4,8 +4,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { ScreenHeaderBtn } from "../components";
 import { COLORS, icons, images } from "../constants";
 import HomeScreen from "../screens/Home";
+import JobDetailsScreen from "../screens/JobDetails";
+import { AppStackNavigatorParamList } from "./types";
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<AppStackNavigatorParamList>();
 
 const AppStack = () => {
   return (
@@ -25,6 +27,25 @@ const AppStack = () => {
             ),
             headerTitle: "",
           }}
+        />
+        <Stack.Screen
+          name="JobDetails"
+          component={JobDetailsScreen}
+          options={({ navigation }) => ({
+            headerStyle: { backgroundColor: COLORS.lightWhite },
+            headerShadowVisible: false,
+            headerLeft: () => (
+              <ScreenHeaderBtn
+                iconUrl={icons.left}
+                dimension="60%"
+                handlePress={() => navigation.navigate("Home")}
+              />
+            ),
+            headerRight: () => (
+              <ScreenHeaderBtn iconUrl={icons.share} dimension="60%" />
+            ),
+            headerTitle: "",
+          })}
         />
       </Stack.Navigator>
     </NavigationContainer>
