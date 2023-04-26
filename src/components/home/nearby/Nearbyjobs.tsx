@@ -2,9 +2,11 @@ import React from "react";
 import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
 
 import styles from "./nearbyjobs.style";
-import useFetch from "../../../hook/useFetch";
+import useFetch, { IJob } from "../../../hook/useFetch";
 import { COLORS } from "../../../constants";
 import NearbyJobCard from "../../common/cards/nearby/NearbyJobCard";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { AppStackNavigatorParamList } from "../../../navigation/types";
 
 const Nearbyjobs = () => {
   const { data, loading, error } = useFetch("search", {
@@ -12,6 +14,12 @@ const Nearbyjobs = () => {
     num_pages: "1",
     page: "1",
   });
+
+  const navigation =
+    useNavigation<NavigationProp<AppStackNavigatorParamList>>();
+  const handleCardPress = (activeJob: IJob) => {
+    navigation.navigate("JobDetails", { jobId: activeJob.job_id });
+  };
 
   return (
     <View style={styles.container}>
@@ -32,7 +40,7 @@ const Nearbyjobs = () => {
             <NearbyJobCard
               item={job}
               key={`nearby-job-${job.job_id}`}
-              handleNavigate={() => {}}
+              handleNavigate={handleCardPress}
             />
           ))
         )}

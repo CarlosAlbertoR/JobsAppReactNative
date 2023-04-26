@@ -12,10 +12,16 @@ interface IPayload {
 export interface IJob {
   job_id: string;
   job_title: string;
+  job_description: string;
   job_country: string;
   job_employment_type: string;
   employer_logo: string;
   employer_name: string;
+  job_google_link: string;
+  job_highlights: {
+    Qualifications: Array<string>;
+    Responsibilities: Array<string>;
+  };
 }
 
 interface IResponse {
@@ -48,7 +54,7 @@ const useFetch = (endpoint: string, payload: IPayload) => {
       setLoading(false);
     } catch (error: any) {
       setError(error);
-      alert("There is an error");
+      alert(error);
     } finally {
       setLoading(false);
     }

@@ -7,12 +7,15 @@ import { checkImageURL } from "../../../../utils";
 
 interface NearbyJobCardProps {
   item: IJob;
-  handleNavigate: () => void;
+  handleNavigate: (item: IJob) => void;
 }
 
 const NearbyJobCard = ({ item, handleNavigate }: NearbyJobCardProps) => {
   return (
-    <TouchableOpacity style={styles.container} onPress={() => handleNavigate()}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => handleNavigate(item)}
+    >
       <TouchableOpacity style={styles.logoContainer}>
         <Image
           source={{

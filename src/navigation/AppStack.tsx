@@ -32,7 +32,7 @@ const AppStack = () => {
           name="JobDetails"
           component={JobDetailsScreen}
           options={({ navigation }) => ({
-            headerStyle: { backgroundColor: COLORS.lightWhite },
+            headerStyle: { backgroundColor: COLORS.white },
             headerShadowVisible: false,
             headerLeft: () => (
               <ScreenHeaderBtn
