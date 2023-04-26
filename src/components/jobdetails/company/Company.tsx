@@ -1,8 +1,9 @@
 import { Image, Text, View } from "react-native";
 
 import styles from "./company.style";
-import { checkImageURL } from "../../../utils";
+
 import { icons } from "../../../constants";
+import { checkImageURL } from "../../../utils";
 
 interface CompanyProps {
   companyLogo: string;

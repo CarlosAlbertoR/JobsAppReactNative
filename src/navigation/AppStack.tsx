@@ -1,11 +1,14 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
+import { AppStackNavigatorParamList } from "./types";
+
 import { ScreenHeaderBtn } from "../components";
 import { COLORS, icons, images } from "../constants";
+
 import HomeScreen from "../screens/Home";
 import JobDetailsScreen from "../screens/JobDetails";
-import { AppStackNavigatorParamList } from "./types";
+import SearchScreen from "../screens/Search/Search";
 
 const Stack = createStackNavigator<AppStackNavigatorParamList>();
 
@@ -32,7 +35,7 @@ const AppStack = () => {
           name="JobDetails"
           component={JobDetailsScreen}
           options={({ navigation }) => ({
-            headerStyle: { backgroundColor: COLORS.white },
+            headerStyle: { backgroundColor: COLORS.lightWhite },
             headerShadowVisible: false,
             headerLeft: () => (
               <ScreenHeaderBtn
@@ -43,6 +46,22 @@ const AppStack = () => {
             ),
             headerRight: () => (
               <ScreenHeaderBtn iconUrl={icons.share} dimension="60%" />
+            ),
+            headerTitle: "",
+          })}
+        />
+        <Stack.Screen
+          name="Search"
+          component={SearchScreen}
+          options={({ navigation }) => ({
+            headerStyle: { backgroundColor: COLORS.lightWhite },
+            headerShadowVisible: false,
+            headerLeft: () => (
+              <ScreenHeaderBtn
+                iconUrl={icons.left}
+                dimension="60%"
+                handlePress={() => navigation.navigate("Home")}
+              />
             ),
             headerTitle: "",
           })}

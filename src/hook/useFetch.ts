@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import axios, { AxiosResponse } from "axios";
 import { API_KEY } from "@env";
+import axios, { AxiosResponse } from "axios";
+import { useEffect, useState } from "react";
 
 interface IPayload {
   query?: string;
@@ -24,7 +24,7 @@ export interface IJob {
   };
 }
 
-interface IResponse {
+export interface IResponse {
   status: string;
   request_id: string;
   parameters: IPayload;

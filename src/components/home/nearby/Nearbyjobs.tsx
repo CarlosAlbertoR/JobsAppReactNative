@@ -1,12 +1,12 @@
-import React from "react";
-import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
 
 import styles from "./nearbyjobs.style";
-import useFetch, { IJob } from "../../../hook/useFetch";
+
 import { COLORS } from "../../../constants";
-import NearbyJobCard from "../../common/cards/nearby/NearbyJobCard";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
+import useFetch, { IJob } from "../../../hook/useFetch";
 import { AppStackNavigatorParamList } from "../../../navigation/types";
+import NearbyJobCard from "../../common/cards/nearby/NearbyJobCard";
 
 const Nearbyjobs = () => {
   const { data, loading, error } = useFetch("search", {

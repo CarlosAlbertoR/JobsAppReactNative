@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   View,
   Text,
@@ -10,13 +10,19 @@ import {
 import { COLORS, icons, SIZES } from "../../../constants";
 import styles from "./welcome.style";
 
+interface WelcomeProps {
+  searchTerm: string;
+  setSearchTerm: (value: string) => void;
+  handleClick: () => void;
+}
+
 interface TypeJobTabProps {
   item: string;
 }
 
 const jobTypes = ["Full-time", "Part-time", "Contractor"];
 
-const Welcome = () => {
+const Welcome = ({ searchTerm, setSearchTerm, handleClick }: WelcomeProps) => {
   const [activeJobType, setActiveJobType] = useState("Full-time");
 
   const typeJopTab = ({ item }: TypeJobTabProps) => {
@@ -55,12 +61,14 @@ const Welcome = () => {
           <TextInput
             style={styles.searchInput}
             placeholder="What are you looking for?"
-            value=""
-            onChange={() => {}}
+            value={searchTerm}
+            onChange={(event) => {
+              setSearchTerm(event.nativeEvent.text);
+            }}
           />
         </View>
 
-        <TouchableOpacity style={styles.searchBtn} onPress={() => {}}>
+        <TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
           <Image
             source={icons.search}
             resizeMode="contain"

@@ -1,5 +1,6 @@
-import { useCallback, useState } from "react";
 import { useRoute } from "@react-navigation/native";
+
+import { useCallback, useState } from "react";
 import {
   ActivityIndicator,
   RefreshControl,

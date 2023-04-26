@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import {
+  ActivityIndicator,
+  FlatList,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+
 import { NavigationProp } from "@react-navigation/core";
 import { useNavigation } from "@react-navigation/native";
-import { View, Text, ActivityIndicator, FlatList } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 import styles from "./popularjobs.style";
+
 import { COLORS, SIZES } from "../../../constants";
-import PopularJobCard from "../../common/cards/popular/PopularJobCard";
 import useFetch, { IJob } from "../../../hook/useFetch";
 import { AppStackNavigatorParamList } from "../../../navigation/types";
+import PopularJobCard from "../../common/cards/popular/PopularJobCard";
 
 const Popularjobs = () => {
   const [selectedJob, setSelectedJob] = useState<IJob | null>(null);
