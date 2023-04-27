@@ -1,5 +1,11 @@
-import { useEffect, useState } from "react";
+import { API_KEY } from "@env";
+import {
+  NavigationProp,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
 import axios, { AxiosResponse } from "axios";
+import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
@@ -8,11 +14,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import {
-  NavigationProp,
-  useNavigation,
-  useRoute,
-} from "@react-navigation/native";
 
 import styles from "./search.style";
 import {
@@ -22,7 +23,6 @@ import {
 import { NearbyJobCard } from "../../components";
 import { IJob, IResponse } from "../../hook/useFetch";
 import { COLORS, SIZES, icons } from "../../constants";
-import { API_KEY } from "@env";
 
 const SearchScreen = () => {
   const navigation =
@@ -79,12 +79,12 @@ const SearchScreen = () => {
   return (
     <FlatList
       data={searchResult}
-      renderItem={({ job }) => (
+      renderItem={({ item }) => (
         <NearbyJobCard
-          item={job}
-          key={`job-${job.job_id}`}
+          item={item}
+          key={`job-${item.job_id}`}
           handleNavigate={() =>
-            navigation.navigate("JobDetails", { jobId: job.job_id })
+            navigation.navigate("JobDetails", { jobId: item.job_id })
           }
         />
       )}

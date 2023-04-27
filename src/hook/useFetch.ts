@@ -18,6 +18,7 @@ export interface IJob {
   employer_logo: string;
   employer_name: string;
   job_google_link: string;
+  job_apply_link: string;
   job_highlights: {
     Qualifications: Array<string>;
     Responsibilities: Array<string>;

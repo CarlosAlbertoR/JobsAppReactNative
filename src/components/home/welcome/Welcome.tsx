@@ -1,14 +1,19 @@
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { useState } from "react";
+
+import styles from "./welcome.style";
+
+import { COLORS, icons, SIZES } from "../../../constants";
+import { AppStackNavigatorParamList } from "../../../navigation/types";
+
 import {
-  View,
+  FlatList,
+  Image,
   Text,
   TextInput,
-  Image,
-  FlatList,
   TouchableOpacity,
+  View,
 } from "react-native";
-import { COLORS, icons, SIZES } from "../../../constants";
-import styles from "./welcome.style";
 
 interface WelcomeProps {
   searchTerm: string;
@@ -23,6 +28,8 @@ interface TypeJobTabProps {
 const jobTypes = ["Full-time", "Part-time", "Contractor"];
 
 const Welcome = ({ searchTerm, setSearchTerm, handleClick }: WelcomeProps) => {
+  const navigation =
+    useNavigation<NavigationProp<AppStackNavigatorParamList>>();
   const [activeJobType, setActiveJobType] = useState("Full-time");
 
   const typeJopTab = ({ item }: TypeJobTabProps) => {
@@ -33,7 +40,10 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }: WelcomeProps) => {
           styles.tab,
           { borderColor: isTabActive ? COLORS.secondary : COLORS.gray2 },
         ]}
-        onPress={() => setActiveJobType(item)}
+        onPress={() => {
+          setActiveJobType(item);
+          navigation.navigate("Search", { id: item });
+        }}
       >
         <Text
           style={[
@@ -52,7 +62,7 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }: WelcomeProps) => {
   return (
     <View>
       <View style={styles.container}>
-        <Text style={styles.userName}>Hello Carlos!</Text>
+        <Text style={styles.userName}>Hello there!</Text>
         <Text style={styles.welcomeMessage}>Find your perfect job.</Text>
       </View>
 
